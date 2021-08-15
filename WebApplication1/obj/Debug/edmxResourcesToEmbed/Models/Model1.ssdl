@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="companyname" Type="varchar" MaxLength="25" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="phonenumber" Type="int" />
+    <Property Name="emailaddress" Type="varchar" MaxLength="25" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="passwaord" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comment" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="JOB">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jobtitle" Type="varchar" MaxLength="25" />
+    <Property Name="responsibilities" Type="varchar" MaxLength="50" />
+    <Property Name="salary" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="location" Type="varchar" MaxLength="50" />
+    <Property Name="contactnumberemail" Type="varchar" MaxLength="25" />
+    <Property Name="forid" Type="int" />
+  </EntityType>
+  <Association Name="FK__JOB__forid__34C8D9D1">
+    <End Role="Employer" Type="Self.Employer" Multiplicity="0..1" />
+    <End Role="JOB" Type="Self.JOB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JOB">
+        <PropertyRef Name="forid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOB" EntityType="Self.JOB" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__JOB__forid__34C8D9D1" Association="Self.FK__JOB__forid__34C8D9D1">
+      <End Role="Employer" EntitySet="Employer" />
+      <End Role="JOB" EntitySet="JOB" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

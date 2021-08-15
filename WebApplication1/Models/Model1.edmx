@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="companyname" Type="varchar" MaxLength="25" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="int" />
+          <Property Name="emailaddress" Type="varchar" MaxLength="25" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="passwaord" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="JOB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jobtitle" Type="varchar" MaxLength="25" />
+          <Property Name="responsibilities" Type="varchar" MaxLength="50" />
+          <Property Name="salary" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="location" Type="varchar" MaxLength="50" />
+          <Property Name="contactnumberemail" Type="varchar" MaxLength="25" />
+          <Property Name="forid" Type="int" />
+        </EntityType>
+        <Association Name="FK__JOB__forid__34C8D9D1">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="0..1" />
+          <End Role="JOB" Type="Self.JOB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JOB">
+              <PropertyRef Name="forid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JOB" EntityType="Self.JOB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__JOB__forid__34C8D9D1" Association="Self.FK__JOB__forid__34C8D9D1">
+            <End Role="Employer" EntitySet="Employer" />
+            <End Role="JOB" EntitySet="JOB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="companyname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phonenumber" Type="Int32" />
+          <Property Name="emailaddress" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="passwaord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JOBs" Relationship="Self.FK__JOB__forid__34C8D9D1" FromRole="Employer" ToRole="JOB" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comment" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JOB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jobtitle" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="responsibilities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactnumberemail" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="forid" Type="Int32" />
+          <NavigationProperty Name="Employer" Relationship="Self.FK__JOB__forid__34C8D9D1" FromRole="JOB" ToRole="Employer" />
+        </EntityType>
+        <Association Name="FK__JOB__forid__34C8D9D1">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="0..1" />
+          <End Role="JOB" Type="Self.JOB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JOB">
+              <PropertyRef Name="forid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employers" EntityType="Self.Employer" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="JOBs" EntityType="Self.JOB" />
+          <AssociationSet Name="FK__JOB__forid__34C8D9D1" Association="Self.FK__JOB__forid__34C8D9D1">
+            <End Role="Employer" EntitySet="Employers" />
+            <End Role="JOB" EntitySet="JOBs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities1">
+          <EntitySetMapping Name="Employers">
+            <EntityTypeMapping TypeName="Database1Model.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="companyname" ColumnName="companyname" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="passwaord" ColumnName="passwaord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="Database1Model.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JOBs">
+            <EntityTypeMapping TypeName="Database1Model.JOB">
+              <MappingFragment StoreEntitySet="JOB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="responsibilities" ColumnName="responsibilities" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="contactnumberemail" ColumnName="contactnumberemail" />
+                <ScalarProperty Name="forid" ColumnName="forid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

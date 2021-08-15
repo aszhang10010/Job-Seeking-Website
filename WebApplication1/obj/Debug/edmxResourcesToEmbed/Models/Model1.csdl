@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="companyname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phonenumber" Type="Int32" />
+    <Property Name="emailaddress" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="passwaord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="JOBs" Relationship="Self.FK__JOB__forid__34C8D9D1" FromRole="Employer" ToRole="JOB" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comment" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="JOB">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jobtitle" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="responsibilities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="salary" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contactnumberemail" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="forid" Type="Int32" />
+    <NavigationProperty Name="Employer" Relationship="Self.FK__JOB__forid__34C8D9D1" FromRole="JOB" ToRole="Employer" />
+  </EntityType>
+  <Association Name="FK__JOB__forid__34C8D9D1">
+    <End Role="Employer" Type="Self.Employer" Multiplicity="0..1" />
+    <End Role="JOB" Type="Self.JOB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JOB">
+        <PropertyRef Name="forid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employers" EntityType="Self.Employer" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <EntitySet Name="JOBs" EntityType="Self.JOB" />
+    <AssociationSet Name="FK__JOB__forid__34C8D9D1" Association="Self.FK__JOB__forid__34C8D9D1">
+      <End Role="Employer" EntitySet="Employers" />
+      <End Role="JOB" EntitySet="JOBs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

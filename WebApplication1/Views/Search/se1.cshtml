@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "se1";
+}
+
+<h2>search</h2>
+<table class="table">
+    <tr>
+    <thead> jobtitle </thead>
+    <thead> responsibilities </thead>
+    <thead> salary </thead>
+    <thead> location </thead>
+    <thead> contactnumberemail </thead>
+    <thead> Employer ID</thead>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.jobtitle</td>
+            <td>@i.responsibilities</td>
+            <td>@i.salary</td>
+            <td>@i.location</td>
+            <td>@i.contactnumberemail</td>
+            <td>@i.forid</td>
+        </tr>   }
+</table>

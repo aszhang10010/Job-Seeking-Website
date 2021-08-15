@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Online Job Search </title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <img src="~/Content/666.PNG" width="40PX", height="40px"/>
+        <h1 style="text-align:center;">Online Job Search</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 menu">
+
+            <a href="/Home/index"> Home Page </a>
+            <a href="/Employer/index"> Employer Registration </a>
+            <a href="/Job/index"> Add Job </a>
+            <a href="/Search/index"> Job Search </a>
+            <a href="/delete/index"> Delete</a>
+            <a href="/Feedback/index"> Feedback</a>
+            <a href="/About"> About Us</a>
+
+
+
+
+
+        </div>
+    </div>
+    @RenderBody();
+    <div class="header">
+        <h1 style="text-align:center;">Thanks for visiting my Page</h1>
+    </div>
+</body>
+</html>
+

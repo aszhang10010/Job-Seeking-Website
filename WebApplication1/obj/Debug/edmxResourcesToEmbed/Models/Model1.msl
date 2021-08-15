@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities1">
+    <EntitySetMapping Name="Employers">
+      <EntityTypeMapping TypeName="Database1Model.Employer">
+        <MappingFragment StoreEntitySet="Employer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="passwaord" ColumnName="passwaord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="Database1Model.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JOBs">
+      <EntityTypeMapping TypeName="Database1Model.JOB">
+        <MappingFragment StoreEntitySet="JOB">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+          <ScalarProperty Name="responsibilities" ColumnName="responsibilities" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="contactnumberemail" ColumnName="contactnumberemail" />
+          <ScalarProperty Name="forid" ColumnName="forid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
